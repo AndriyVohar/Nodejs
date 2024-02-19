@@ -1,0 +1,42 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "publisher_address": "New York, NY",
+    "price": 15.99,
+    "bookstore": "Books R Us"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "publisher_address": "London, UK",
+    "price": 12.5,
+    "bookstore": "Read It All"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "publisher_address": "London, UK",
+    "price": 10.75,
+    "bookstore": "Literary Haven"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "year": 1951,
+    "publisher_address": "New York, NY",
+    "price": 14.25,
+    "bookstore": "Book Oasis"
+  },
+  {
+    "title": "GHGHGHGH",
+    "author": "Sample Author",
+    "year": 2022,
+    "publisher_address": "Sample Address",
+    "price": 19.99,
+    "bookstore": "Sample Bookstore"
+  }
+]
