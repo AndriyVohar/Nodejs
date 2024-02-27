@@ -1,5 +1,6 @@
 [
   {
+    "id": "085bf19d-049a-436f-9997-3vnm63dd1cb9",
     "title": "1984",
     "author": "George Orwell",
     "year": 1949,
@@ -8,11 +9,39 @@
     "bookstore": "Literary Haven"
   },
   {
+    "id": "095ff59d-049a-436f-9997-2dc563dd1cb9",
     "title": "The Catcher in the Rye",
     "author": "J.D. Salinger",
     "year": 1951,
     "publisher_address": "New York, NY",
     "price": 14.25,
     "bookstore": "Book Oasis"
+  },
+  {
+    "id": "085bf19d-049a-436f-9997-2dc563dd1cb9",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "publisher_address": "New York, NY",
+    "price": 12.5,
+    "bookstore": "Books & Co."
+  },
+  {
+    "id": "57168251-1df8-40b2-850e-0159a7351415",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "publisher_address": "London, UK",
+    "price": 9.99,
+    "bookstore": "The Bookworm"
+  },
+  {
+    "id": "276a817a-7d05-4f92-b1dc-2ae02ba5df00",
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "author": "J. R. R. Tolkien",
+    "year": 1954,
+    "publisher_address": "London, United Kingdom",
+    "price": 12.99,
+    "bookstore": "Barnes & Noble"
   }
 ]
