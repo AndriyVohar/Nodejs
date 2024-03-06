@@ -26,5 +26,24 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+app.use((req, res, next) => {
+  console.log(`[${new Date().toUTCString()}] ${req.method}: ${req.path}`);
+  next();
+});
+app.get('/', (req, res) => {
+  res.status(200).json({
+      status: 200,
+      data: {
+        message: "Node.js ExApp"
+      }
+  })
+});
+app.use((err, req, res, next) => {
+  const erorrStatus = err.status || 500;
+  console.error(`${'\x1b[31m'}[${new Date().toUTCString()}] ${req.method}: ${req.path}. Error(${erorrStatus}): ${err.message}`, '\x1b[0m');
+  res.status(erorrStatus).send({
+      status: erorrStatus,
+      error: err
+  });
+});
 module.exports = app;

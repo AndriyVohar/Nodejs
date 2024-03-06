@@ -1,11 +1,9 @@
 const bookService = require('../services/books.service');
-const { v4: uuidv4 } = require('uuid');
 
 async function createBook(req, res) {
     try {
         console.log('Request Body:', req.body);
         const newBookData = req.body;
-        newBookData.id = uuidv4();
         const newBook = await bookService.create(newBookData);
         
         res.status(200).json({
