@@ -36,10 +36,15 @@ async function findByIdAndDelete(id) {
   return bookModel.findByIdAndDelete(id);
 }
 
+async function findOne(filter) {
+  return bookModel.findOne(filter);
+}
+
 module.exports = {
   create,
   find,
   findById,
   findByIdAndUpdate,
   findByIdAndDelete,
+  findOne,
 };

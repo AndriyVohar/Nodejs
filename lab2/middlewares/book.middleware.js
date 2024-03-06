@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const ObjectId = require('mongoose').Types.ObjectId;
 const bookService = require('../services/books.service');
+const {BookSchema} = require('../joi_validation_schemas/books.schemas')
 
 async function bookByIdValidation(req, res, next) {
     try {
@@ -21,7 +22,30 @@ async function bookByIdValidation(req, res, next) {
         next(err);
     }
 };
+const bookDataValidation = async (req, res, next) => {
+    try {
+        const { error } = BookSchema.validate(req.body);
 
+        if (error) {
+            throw createError.BadRequest(error.details[0].message);
+        }
+
+        const book = await bookService.findOne({
+            $or: [
+                { title: req.body.title },
+            ]
+        });
+
+        if (book) {
+            throw createError.BadRequest("Book with such title already exist");
+        }
+
+        next();
+    } catch (err) {
+        next(err);
+    }
+};
 module.exports = {
     bookByIdValidation,
+    bookDataValidation,
 };
