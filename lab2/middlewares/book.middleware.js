@@ -21,7 +21,19 @@ async function bookByIdValidation(req, res, next) {
         next(err);
     }
 };
+async function bookYearPublishingValidation(req,res,next) {
+    try{
+        const {year_publishing} = req.body;
+        if(year_publishing<1801){
+            throw createError.NotFound("year_publishing not valid");
+        }
+        next();
+    }catch(err){
+        next(err);
+    }
+}
 
 module.exports = {
     bookByIdValidation,
+    bookYearPublishingValidation
 };
