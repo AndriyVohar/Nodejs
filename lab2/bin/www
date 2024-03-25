@@ -14,6 +14,7 @@ var http = require("http");
  const mongoose = require('mongoose');
 var port = normalizePort(process.env.PORT || "3000");
 const mongodb_uri = "mongodb://localhost:27017/nodejs_learn";
+
 app.set("port", port);
 mongoose.connect(mongodb_uri).then(() => {
   console.log("Mongo DB connected");

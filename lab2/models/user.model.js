@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const genderEnum = require('../enums/gender.enum');
 
 const userSchema = new Schema({
     phoneNumber: {
@@ -23,10 +22,6 @@ const userSchema = new Schema({
     },
     birthDate: {
         type: Date,
-    },
-    gender: {
-        type: String,
-        enum: Object.values(genderEnum),
     },
     password: {
         type: String, // Contains hashed password

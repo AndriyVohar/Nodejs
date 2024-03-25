@@ -6,8 +6,8 @@ async function createBook(req, res) {
         const newBookData = req.body;
         const newBook = await bookService.create(newBookData);
         
-        res.status(200).json({
-            status: 200,
+        res.status(201).json({
+            status: 201,
             data: newBook,
         });
     } catch (err) {
@@ -41,8 +41,8 @@ async function getBook(req, res) {
         const book = await bookService.findById(id);
 
         if (!book) {
-            return res.status(400).json({
-                status: 400,
+            return res.status(404).json({
+                status: 404,
                 message: 'Book not found.',
             });
         }
@@ -83,8 +83,8 @@ async function deleteBook(req, res) {
         const { id } = req.params;
         await bookService.findByIdAndDelete(id);
 
-        res.status(200).json({
-            status: 200,
+        res.status(204).json({
+            status: 204,
         });
     } catch (err) {
         console.error(err);

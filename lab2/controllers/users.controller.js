@@ -9,8 +9,8 @@ async function createUser(req, res, next) {
             password: await bcrypt.hash(req.body.password, await bcrypt.genSalt(10))
         });
 
-        res.status(200).json({
-            status: 200,
+        res.status(201).json({
+            status: 201,
             data: { _id },
         });
     } catch(err) {
@@ -35,8 +35,8 @@ async function getUser(req, res, next) {
         const user = await userService.findById(userId);
 
         if (!user) {
-            return res.status(400).json({
-                status: 400,
+            return res.status(404).json({
+                status: 404,
                 error: {
                     message: 'User not found.'
                 },
@@ -71,8 +71,8 @@ async function deleteUser(req, res, next) {
         const { userId } = req.params;
         await userService.findByIdAndDelete(userId);
 
-        res.status(200).json({
-            status: 200,
+        res.status(204).json({
+            status: 204,
         });
     } catch(err) {
         next(createError.InternalServerError(err.message));

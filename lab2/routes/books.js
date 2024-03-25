@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const controller = require('../controller/books.controller')
+const controller = require('../controllers/books.controller')
 const middleware = require('../middlewares/book.middleware')
 
 router.route('/')

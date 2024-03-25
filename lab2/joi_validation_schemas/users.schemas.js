@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const genderEnum = require('../enums/gender.enum');
 
 const UserCreateSchema = Joi.object({
     phoneNumber: Joi.string()
@@ -19,9 +18,6 @@ const UserCreateSchema = Joi.object({
         .required(),
 
     birthDate: Joi.date(),
-
-    gender: Joi.string()
-        .valid(...Object.values(genderEnum)),
 
     password: Joi.string()
         .required()
@@ -45,9 +41,6 @@ const UserUpdateSchema = Joi.object({
         .email(),
 
     birthDate: Joi.date(),
-
-    gender: Joi.string()
-        .valid(...Object.values(genderEnum)),
 });
 
 module.exports = {

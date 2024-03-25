@@ -1,14 +1,14 @@
-const config = require('../config');
+jwtSecret= 'secret';
 const jwt = require('jsonwebtoken');
 const createError = require('http-errors');
 
 const signAccessToken = async (user) => {
-    return jwt.sign({ id: user.id }, config.jwtSecret, { expiresIn: 24 * 60 * 60 });
+    return jwt.sign({ id: user.id }, jwtSecret, { expiresIn: 24 * 60 * 60 });
 };
 
 const verifyAccessToken = async (token) => {
     try {
-        return jwt.verify(token, config.jwtSecret);
+        return jwt.verify(token, jwtSecret);
     } catch (err) {
         let message = err.name == 'JsonWebTokenError' ? 'Unauthorized' : err.message
         if (err.name == 'JsonWebTokenError') {

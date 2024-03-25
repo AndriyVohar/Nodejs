@@ -6,6 +6,7 @@ const { SigninSchema } = require('../joi_validation_schemas/auth.schemas');
 
 async function authenticationCheck(req, res, next) {
     try {
+        console.log(req.body)
         if (!req.headers['x-auth']) {
             throw createError.Unauthorized('Access token is required');
         }
