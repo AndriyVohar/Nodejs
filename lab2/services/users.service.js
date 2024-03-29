@@ -7,7 +7,7 @@ async function create(user) {
 
 async function find() {
     return {
-        items: await userModel.find({ password: 0, __v: 0 }),
+        items: await userModel.find({},{ password: 0, __v: 0 }),
         count: await userModel.countDocuments(),
     }
 }

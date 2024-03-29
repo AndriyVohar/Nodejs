@@ -22,7 +22,7 @@ async function getUsers(req, res, next) {
     try {
         res.status(200).json({
             status: 200,
-            data: await userService.find(req.query),
+            data: await userService.find({}),
         });
     } catch(err) {
         next(createError.InternalServerError(err.message));
