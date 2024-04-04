@@ -7,7 +7,11 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth.route');
 const { authenticationCheck } = require('./middlewares/auth.middleware');
 
+const multer = require('multer');
+
 var app = express();
+
+app.use(express.static('public'));
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -31,6 +35,17 @@ app.use('/auth', authRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+// Multer error handler middleware
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      throw createError.BadRequest('File size limit exceeded. Please upload a smaller file.');
+    }
+  }
+
+  next(err);
 });
 
 // error handler

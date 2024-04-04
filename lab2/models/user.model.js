@@ -26,6 +26,9 @@ const userSchema = new Schema({
     password: {
         type: String, // Contains hashed password
     },
+    profilePicture: {
+        type: String,
+    }
 }, {
     timestamps: true,
 });
