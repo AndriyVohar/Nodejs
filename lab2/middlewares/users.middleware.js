@@ -98,7 +98,7 @@ const userUploadProfilePicture = multer({
 
       callback(null, true);
     }
-}).single('file');
+}).single('profilePicture');
 
 const usersUpload = multer().single('file');
 
