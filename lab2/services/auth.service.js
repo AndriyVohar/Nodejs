@@ -1,4 +1,4 @@
-jwtSecret= 'secret';
+let jwtSecret= 'secret';
 const jwt = require('jsonwebtoken');
 const createError = require('http-errors');
 
@@ -6,19 +6,18 @@ const signAccessToken = async (user) => {
     return jwt.sign({ id: user.id }, jwtSecret, { expiresIn: 24 * 60 * 60 });
 };
 
-const verifyAccessToken = async (token) => {
-    try {
-        return jwt.verify(token, jwtSecret);
-    } catch (err) {
-        let message = err.name == 'JsonWebTokenError' ? 'Unauthorized' : err.message
-        if (err.name == 'JsonWebTokenError') {
-            message = 'Unauthorized';
-        } else if (err.name == 'TokenExpiredError') {
-            message = 'Session ended. Access token expired'
-        }
-
-        throw createError.Unauthorized(message);
-    }
+const verifyAccessToken = (token) => {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, jwtSecret, (err, decoded) => {
+            if (err) {
+                console.error("Помилка розшифрування токена:", err);
+                reject(err);
+            } else {
+                console.log("Декодовані дані з токена:", decoded);
+                resolve(decoded.id);
+            }
+        });
+    });
 };
 
 module.exports = {
