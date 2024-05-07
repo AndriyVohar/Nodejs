@@ -16,7 +16,10 @@ var port = normalizePort(process.env.PORT || "3000");
 const mongodb_uri = "mongodb://localhost:27017/nodejs_learn";
 
 app.set("port", port);
+
+const startScheduleJobs = require('../jobs');
 mongoose.connect(mongodb_uri).then(() => {
+  startScheduleJobs();
   console.log("Mongo DB connected");
 });
 

@@ -5,7 +5,6 @@ var path = require('path');
 var booksRouter = require('./routes/books');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth.route');
-const { authenticationCheck } = require('./middlewares/auth.middleware');
 
 const multer = require('multer');
 
