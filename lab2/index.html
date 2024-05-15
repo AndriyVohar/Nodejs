@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Picture</title>
+</head>
+<body>
+<img src="./public/profilePictures/6abdd50eb8c1e9f6d16fc7913f254e7f" alt="Profile Picture">
+
+<h1>Download Photo</h1>
+<button onclick="downloadPicture(event)">Download Profile Picture</button>
+<script>
+    function downloadPicture(event){
+        console.log("ok");
+        fetch('http://localhost:3000/users/663a3523e1ec8a57d3cea941/profilePicture/download', {
+            method: 'GET', // or 'POST', 'PUT', etc.
+            headers: {
+                // 'Content-Type': 'application/json',
+                'x-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2EzNTIzZTFlYzhhNTdkM2NlYTk0MSIsImlhdCI6MTcxNTY2MzAzMSwiZXhwIjoxNzE1NzQ5NDMxfQ.-qzCnY4egeDfkivLvzhdkALshU3He4CsQQhIA6YcVLg'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+</script>
+</body>
+</html>

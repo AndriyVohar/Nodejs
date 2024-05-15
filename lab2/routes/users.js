@@ -22,6 +22,9 @@ router.route('/:userId')
 router.route('/:userId/profilePicture')
     .put(middlewares.userByIdValidation, middlewares.userUploadProfilePicture, controllers.updateUserProfilePicture);
 
+router.route('/:userId/profilePicture/download')
+    .get(middlewares.userByIdValidation, controllers.downloadUserProfilePicture);
+
 router.route('/upload')
     .post(middlewares.usersUpload, controllers.uploadUsers);
 

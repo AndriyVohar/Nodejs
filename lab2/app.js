@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var cors = require('cors');
 
 var booksRouter = require('./routes/books');
 var usersRouter = require('./routes/users');
@@ -27,6 +28,9 @@ app.get('/', (req, res) => {
     }
   });
 });
+
+app.use(cors())
+
 
 app.use('/books', booksRouter);
 app.use('/users', usersRouter);

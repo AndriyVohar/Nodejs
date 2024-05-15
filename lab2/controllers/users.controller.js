@@ -107,6 +107,23 @@ async function updateUserProfilePicture(req, res, next) {
     }
 };
 
+async function downloadUserProfilePicture(req, res, next) {
+    try {
+        const { userId } = req.params;
+        const user = await userService.findById(userId);
+        if (user.profilePicture) {
+            const filePath = path.join(__dirname, '..', 'public', 'profilePictures', user.profilePicture);
+            res.status(200).download(filePath);
+        } else {
+            res.status(404).json({
+                status: 404,
+            });
+        }
+    } catch (err) {
+        next(createError.InternalServerError(err.message));
+    }
+}
+
 async function uploadUsers(req, res, next) {
     try {
         console.log(req.file);
@@ -125,5 +142,6 @@ module.exports = {
     updateUser,
     deleteUser,
     updateUserProfilePicture,
+    downloadUserProfilePicture,
     uploadUsers, 
 };
